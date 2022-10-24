@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CertificateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
@@ -39,7 +40,7 @@ Route::get('datauser', [UserController::class, 'datauser']);
 Route::get('datanews', [NewsController::class, 'datanews']);
 Route::get('dataproduct', [ProductController::class, 'dataproduct']);
 Route::get('datacertificate', [CertificateController::class, 'datacertificate']);
-
+Route::get('datacareer', [CareerController::class, 'datacareer']);
 
 // berita
 Route::post('add_berita', [NewsController::class, 'add_berita']);
@@ -55,3 +56,8 @@ Route::post('update_produk/{id}', [ProductController::class, 'update_produk']);
 Route::post('add_certificate', [CertificateController::class, 'add_certificate']);
 Route::get('datacertificate_id/{id}', [CertificateController::class, 'datacertificate_id']);
 Route::post('update_certificate/{id}', [CertificateController::class, 'update_certificate']);
+
+//career
+Route::post('add_career', [CareerController::class, 'add_career']);
+Route::get('datacareer_id/{id}', [CareerController::class, 'datacareer_id']);
+Route::post('update_career/{id}', [CareerController::class, 'update_career']);

@@ -19,7 +19,7 @@ class ApiController extends Controller
     public function show_berita()
     {
         $response = DB::table('tb_berita')
-        ->select('*')
+            ->select('*')
             ->where('status_berita', 1)
             ->get();
 
@@ -29,7 +29,7 @@ class ApiController extends Controller
     public function show_berita_hot()
     {
         $response = DB::table('tb_berita')
-        ->select('*')
+            ->select('*')
             ->where('status_berita', 3)
             ->get();
 
@@ -39,7 +39,7 @@ class ApiController extends Controller
     public function show_berita_top()
     {
         $response = DB::table('tb_berita')
-        ->select('*')
+            ->select('*')
             ->where('status_berita', 2)
             ->get();
 
@@ -61,6 +61,16 @@ class ApiController extends Controller
         $response = DB::table('tb_certificate')
             ->select('*')
             ->where('status_certificate', 1)
+            ->get();
+
+        return $response;
+    }
+
+    public function show_career()
+    {
+        $response = DB::table('tb_career')
+            ->select('*')
+            ->where('status_career', 1)
             ->get();
 
         return $response;

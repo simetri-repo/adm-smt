@@ -25,3 +25,4 @@ Route::get('show_certificate', [ApiController::class, 'show_certificate']);
 Route::get('show_berita', [ApiController::class, 'show_berita']);
 Route::get('show_berita_hot', [ApiController::class, 'show_berita_hot']);
 Route::get('show_berita_top', [ApiController::class, 'show_berita_top']);
+Route::get('show_career', [ApiController::class, 'show_career']);

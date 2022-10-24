@@ -19,6 +19,8 @@
          href="{{ url('dataproduct') }}"><i class="fas fa-luggage-cart"></i> Product</a>
       <a class=" @yield('datacertificate') list-group-item list-group-item-action list-group-item-secondary p-3"
          href="{{ url('datacertificate') }}"><i class="fas fa-tags"></i> Certificate</a>
+      <a class=" @yield('datacareer') list-group-item list-group-item-action list-group-item-secondary p-3"
+         href="{{ url('datacareer') }}"><i class="fas fa-briefcase"></i> Career</a>
       <a class="list-group-item list-group-item-action list-group-item-secondary p-3" href="{{ url('logout') }}"><i
             class="fas fa-power-off"></i> LogOut</a>
    </div>
