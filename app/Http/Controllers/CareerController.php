@@ -42,6 +42,7 @@ class CareerController extends Controller
             'desc_career' => $request->desc_career,
             'require_career' => $request->require_career,
             'status_career' => 9,
+            'open' => 0,
             'created_by' => session('username'),
             'updated_at' => $tgl
 

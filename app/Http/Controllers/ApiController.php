@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\DB;
 // certificate
 // display = 1 , notdisplay = 9
 
+// career
+// display = 1 , notdisplay = 9
+
 class ApiController extends Controller
 {
     public function show_berita()
@@ -68,10 +71,15 @@ class ApiController extends Controller
 
     public function show_career()
     {
-        $response = DB::table('tb_career')
+        $careerList = DB::table('tb_career')
             ->select('*')
             ->where('status_career', 1)
             ->get();
+
+        $response = [
+            'message' => "List Career",
+            'data' => $careerList
+        ];
 
         return $response;
     }
