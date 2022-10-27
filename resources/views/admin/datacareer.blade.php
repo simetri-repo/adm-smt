@@ -31,11 +31,10 @@ active
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Gambar Career</th>
                                     <th>Job Title</th>
                                     <th>Job Description</th>
                                     <th>Job Requirements</th>
-                                    <th>Status</th>
+                                    <th>Email</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -44,12 +43,10 @@ active
                                 @foreach ($response as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td><img src="{{ asset($item->gambar_career) }}" class="thumbnail"
-                                            style="height: 200px">
-                                    </td>
                                     <td>{{ $item->nama_career }}</td>
                                     <td>{{ $item->desc_career }}</td>
                                     <td>{{ $item->require_career }}</td>
+                                    <td>{{ $item->email_career }}</td>
                                     <td>@if ($item->status_career == 9)
                                         <b class="text-danger">Not-Display</b>
                                         @else
@@ -86,12 +83,6 @@ active
                 <form action="{{ url('add_career') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="" class="form-label">Gambar Career</label>
-                        <input type="file" class="form-control" placeholder="File" name="gambar_career"
-                            id="gambar_career">
-                        {{-- <small id="helpId" class="form-text text-muted">Help text</small> --}}
-                    </div>
-                    <div class="mb-3">
                         <label for="" class="form-label">Job Title</label>
                         <input type="text" class="form-control @error('gambar_career') is-invalid  @enderror"
                             name="nama_career" id="" value="">
@@ -105,6 +96,12 @@ active
                     <div class="mb-3">
                         <label for="" class="form-label">Job Requirements</label>
                         <textarea class="form-control" name="require_career" id="" rows="3"></textarea>
+                        {{-- <small id="helpId" class="form-text text-muted">Help text</small> --}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email_career" id="" rows="3"
+                            value="recruitment@simetriputra.co.id"></textarea>
                         {{-- <small id="helpId" class="form-text text-muted">Help text</small> --}}
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>

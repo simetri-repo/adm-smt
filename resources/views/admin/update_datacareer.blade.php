@@ -19,20 +19,7 @@ active
                         method="POST">
                         @csrf
 
-                        <div class="mb-3">
-                           <label for="" class="form-label">Gambar career :</label> <br>
-                           <img src="{{ asset($response[0]->gambar_career) }}" alt="" style="height:200px">
-                           <br />
-                           <br />
-                           <input type="text" name="gambar_career" class="form-control"
-                              value="{{ $response[0]->gambar_career }}" readonly>
-                           <br />
-                           <label for="" class="form-label">Ganti Gambar career :</label> <br>
-                           <input type="file" name="gambar_career_new" id="" class="form-control"
-                              aria-describedby="helpId" />
-                           {{-- <small id="helpId" class="text-muted">Help text</small> --}}
-                        </div>
-                        {{-- --}}
+
                         <div class="mb-3">
                            <label for="" class="form-label">Job Title :</label>
                            <input type="text" name="nama_career" id="" class="form-control" placeholder=""
@@ -51,6 +38,13 @@ active
                            <label for="" class="form-label">Job Requirements :</label>
                            <textarea class="form-control" name="require_career" id="" cols="30"
                               rows="10">{{ $response[0]->require_career }}</textarea>
+                           {{-- <small id="helpId" class="text-muted">Help text</small> --}}
+                        </div>
+                        {{-- --}}
+                        <div class="mb-3">
+                           <label for="" class="form-label">Job Title :</label>
+                           <input type="text" name="email_career" id="" class="form-control" placeholder=""
+                              aria-describedby="helpId" value="{{ $response[0]->email_career }}">
                            {{-- <small id="helpId" class="text-muted">Help text</small> --}}
                         </div>
                         {{-- --}}
