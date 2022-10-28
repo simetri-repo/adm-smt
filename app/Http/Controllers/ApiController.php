@@ -71,16 +71,22 @@ class ApiController extends Controller
 
     public function show_career()
     {
-        $careerList = DB::table('tb_career')
+        $response = DB::table('tb_career')
             ->select('*')
             ->where('status_career', 1)
             ->get();
 
-        $response = [
-            'message' => "List Career",
-            'data' => $careerList
-        ];
-
         return $response;
+        // $careerList = DB::table('tb_career')
+        //     ->select('*')
+        //     ->where('status_career', 1)
+        //     ->get();
+
+        // $response = [
+        //     'message' => "List Career",
+        //     'data' => $careerList
+        // ];
+
+        // return $response;
     }
 }

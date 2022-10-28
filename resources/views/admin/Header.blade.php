@@ -12,6 +12,9 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
    <script src="https://kit.fontawesome.com/60a76559cb.js" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+   <script src="https://cdn.tiny.cloud/1/lp0pxpqnfd14kwc69amcm9a24qam93wqcolyssj545o1cq5a/tinymce/5/tinymce.min.js"
+      referrerpolicy="origin">
+   </script>
    <title>Admin Sinarmetrindo</title>
    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">

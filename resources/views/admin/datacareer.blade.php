@@ -35,7 +35,7 @@ active
                                     <th>Job Description</th>
                                     <th>Job Requirements</th>
                                     <th>Email</th>
-                                    <th>Action</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,8 +44,8 @@ active
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nama_career }}</td>
-                                    <td>{{ $item->desc_career }}</td>
-                                    <td>{{ $item->require_career }}</td>
+                                    <td>{!! html_entity_decode($item->desc_career) !!}</td>
+                                    <td>{!! html_entity_decode($item->require_career) !!}</td>
                                     <td>{{ $item->email_career }}</td>
                                     <td>@if ($item->status_career == 9)
                                         <b class="text-danger">Not-Display</b>
@@ -72,7 +72,7 @@ active
 <!-- ADD -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Add career
@@ -88,20 +88,32 @@ active
                             name="nama_career" id="" value="">
                         {{-- <small id="helpId" class="form-text text-muted">Help text</small> --}}
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="" class="form-label">Job Description</label>
                         <textarea class="form-control" name="desc_career" id="" rows="3"></textarea>
-                        {{-- <small id="helpId" class="form-text text-muted">Help text</small> --}}
-                    </div>
+
+                    </div> --}}
+
                     <div class="mb-3">
-                        <label for="" class="form-label">Job Requirements</label>
-                        <textarea class="form-control" name="require_career" id="" rows="3"></textarea>
+                        <label for="formFile" class="form-label">Job Description</label>
+                        <textarea class="form-control" name="desc_career" id="KeteranganShowing"></textarea>
+
+                        {{--
+                        <x-forms.tinymce-editor /> --}}
+                        {{-- <textarea class="form-control" name="keterangan_showing" required></textarea> --}}
+                        <small id="helpId" class="form-text text-muted"></small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Job Requirements</label>
+                        <textarea class="form-control" name="require_career" id="KeteranganShowingUp"></textarea>
                         {{-- <small id="helpId" class="form-text text-muted">Help text</small> --}}
+                        <small id="helpId" class="form-text text-muted"></small>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Email</label>
                         <input type="email" class="form-control" name="email_career" id="" rows="3"
-                            value="recruitment@simetriputra.co.id"></textarea>
+                            value="hrcdd@sinarmetrindo.co.id"></textarea>
                         {{-- <small id="helpId" class="form-text text-muted">Help text</small> --}}
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -111,4 +123,68 @@ active
     </div>
 </div>
 {{-- --}}
+@endsection
+@section('style')
+
+<link rel="stylesheet" href="{{ asset('richtexteditor/rte_theme_default.css')}}" />
+<script type="text/javascript" src="{{ asset('richtexteditor/rte.js')}}"></script>
+<script type="text/javascript" src="{{ asset('richtexteditor/plugins/all_plugins.js')}}"></script>
+@endsection
+
+@section('script')
+<script type="text/javascript">
+    tinymce.init({
+        selector: '#KeteranganShowing',
+        plugins: [
+            'advlist autolink link lists charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+            'table emoticons template paste help'
+        ],
+        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist outdent indent | link media | preview fullscreen | ' +
+            'forecolor backcolor',
+        menu: {
+            favs: {
+                title: 'My Favorites',
+                items: 'code visualaid | searchreplace | emoticons'
+            }
+        },
+        menubar: 'favs file edit view insert format tools table help',
+        content_css: 'css/content.css'
+    });
+
+    $(document).on('focusin', function(e) {
+        if ($(e.target).closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root").length) {
+            e.stopImmediatePropagation();
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    tinymce.init({
+        selector: '#KeteranganShowingUp',
+        plugins: [
+            'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+            'table emoticons template paste help'
+        ],
+        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist outdent indent | link media | preview fullscreen | ' +
+            'forecolor backcolor | help',
+        menu: {
+            favs: {
+                title: 'My Favorites',
+                items: 'code visualaid | searchreplace | emoticons'
+            }
+        },
+        menubar: 'favs file edit view insert format tools table help',
+        content_css: 'css/content.css'
+    });
+
+    $(document).on('focusin', function(e) {
+        if ($(e.target).closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root").length) {
+            e.stopImmediatePropagation();
+        }
+    });
+</script>
 @endsection
