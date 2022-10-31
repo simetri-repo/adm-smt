@@ -56,6 +56,9 @@ active
                               @endif
                            </td>
                            <td><a href="{{ url('datanews_id/'.$item->id_berita) }}" class="btn btn-warning"> Edit </a>
+                              <a href="{{ url('delete_news/'. $item->id_berita) }}"
+                                 onclick="return confirm('Data akan dihapus! apakah ok?')" class="btn btn-danger"><i
+                                    class="fa fa-trash"></i></a>
                            </td>
                         </tr>
                         @endforeach

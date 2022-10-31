@@ -100,4 +100,14 @@ class CertificateController extends Controller
 
         return redirect('datacertificate')->with('status_ok', 'Update Success!');
     }
+
+    public function hapus_cert($id)
+    {
+
+        $delete = DB::table('tb_certificate')
+            ->where('id_certificate', $id)
+            ->delete();
+
+        return redirect('datacertificate')->with('status_ok', 'Data berhasil dihapus.');
+    }
 }

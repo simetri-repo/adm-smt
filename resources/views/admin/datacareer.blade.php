@@ -26,7 +26,7 @@ active
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Table certificate</h5>
-                    <div class="table-responsive">
+                    <div class="table-responsive-lg">
                         <table id="dt_table" class="display table table-striped" style="width:100%">
                             <thead>
                                 <tr>
@@ -36,6 +36,7 @@ active
                                     <th>Job Requirements</th>
                                     <th>Email</th>
                                     <th>Status</th>
+                                    <th colSpan={2}>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,9 +45,9 @@ active
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nama_career }}</td>
-                                    <td>{!! html_entity_decode($item->desc_career) !!}</td>
-                                    <td>{!! html_entity_decode($item->require_career) !!}</td>
-                                    <td>{{ $item->email_career }}</td>
+                                    <td>{!! html_entity_decode(Str::limit($item->desc_career, 50, '...')) !!}</td>
+                                    <td>{!! html_entity_decode(Str::limit($item->require_career, 50, '...')) !!}</td>
+                                    <td>{{ Str::limit($item->email_career, 8, '...') }}</td>
                                     <td>@if ($item->status_career == 9)
                                         <b class="text-danger">Not-Display</b>
                                         @else
@@ -56,6 +57,9 @@ active
                                     <td><a href="{{ url('datacareer_id/'.$item->id_career) }}" class="btn btn-warning">
                                             Edit
                                         </a>
+                                        <a href="{{ url('hapus_career/'. $item->id_career) }}"
+                                            onclick="return confirm('Data akan dihapus! apakah ok?')"
+                                            class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -55,6 +55,9 @@ active
                            <td><a href="{{ url('datacertificate_id/'.$item->id_certificate) }}" class="btn btn-warning">
                                  Edit
                               </a>
+                              <a href="{{ url('hapus_cert/'. $item->id_certificate) }}"
+                                 onclick="return confirm('Data akan dihapus! apakah ok?')" class="btn btn-danger"><i
+                                    class="fa fa-trash"></i></a>
                            </td>
                         </tr>
                         @endforeach

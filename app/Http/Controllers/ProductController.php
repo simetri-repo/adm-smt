@@ -108,4 +108,13 @@ class ProductController extends Controller
 
         return redirect('dataproduct')->with('status_ok', 'Update Success!');
     }
+
+    public function delete_product($id)
+    {
+        $delete = DB::table('tb_produk')
+            ->where('id_produk', $id)
+            ->delete();
+
+        return redirect('dataproduct')->with('status_ok', 'Data berhasil dihapus.');
+    }
 }

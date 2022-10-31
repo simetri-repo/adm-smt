@@ -105,4 +105,12 @@ class NewsController extends Controller
 
         return redirect('datanews')->with('status_ok', 'Update Success!');
     }
+
+    public function delete_news($id)
+    {
+        $delete = DB::table('tb_berita')
+            ->where('id_berita', $id)
+            ->delete();
+        return redirect('datanews')->with('status_ok', 'Data berhasil dihapus.');
+    }
 }

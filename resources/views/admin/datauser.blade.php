@@ -57,7 +57,11 @@ active
                               @endif
                            </td>
                            <td><button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                 data-bs-target="#editForm{{ $loop->iteration }}">Edit</button></td>
+                                 data-bs-target="#editForm{{ $loop->iteration }}">Edit</button>
+                              <a href="{{ url('delete_user/'. $item->id) }}"
+                                 onclick="return confirm('Data akan dihapus! apakah ok?')" class="btn btn-danger"><i
+                                    class="fa fa-trash"></i></a>
+                           </td>
                         </tr>
 
                         <!-- EDIT -->
@@ -161,6 +165,7 @@ active
                      {{-- <option selected>Select one</option> --}}
                      {{-- <option value="9">Super Admin</option> --}}
                      <option value="1">Admin</option>
+                     <option value="2">User</option>
                   </select>
                </div>
                <button type="submit" disabled id="okei" class="btn btn-primary">Submit</button>

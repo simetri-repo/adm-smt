@@ -112,4 +112,13 @@ class CareerController extends Controller
 
         return redirect('datacareer')->with('status_ok', 'Update Success!');
     }
+
+    public function hapus_career($id)
+    {
+        $delete = DB::table('tb_career')
+            ->where('id_career', $id)
+            ->delete();
+
+        return redirect('datacareer')->with('status_ok', 'Data berhasil dihapus.');
+    }
 }

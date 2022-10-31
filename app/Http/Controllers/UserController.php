@@ -29,4 +29,12 @@ class UserController extends Controller
 
         return redirect('datauser')->with('status_ok', 'password reset sukses.');
     }
+    public function delete_user($id)
+    {
+        $delete = DB::table('tb_user')
+            ->where('id', $id)
+            ->delete();
+
+        return redirect('datauser')->with('status_ok', 'data user telah dihapus.');
+    }
 }
