@@ -30,7 +30,7 @@ Route::get('logout', [MainController::class, 'logout']);
 Route::post('regist_save', [MainController::class, 'regist_save']);
 Route::get('reset_password/{id}', [UserController::class, 'reset_password']);
 Route::get('delete_user/{id}', [UserController::class, 'delete_user']);
-
+Route::post('edit_user/{id}', [UserController::class, 'edit_user']);
 
 
 //data

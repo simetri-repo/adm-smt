@@ -29,6 +29,17 @@ class UserController extends Controller
 
         return redirect('datauser')->with('status_ok', 'password reset sukses.');
     }
+    public function edit_user(Request $item, $id)
+    {
+        $response = DB::table('tb_user')
+            ->where('id', $id)
+            ->update([
+                'role' => $item->role,
+                'status' => $item->status
+            ]);
+        return redirect('datauser')->with('status_ok', 'Perubahan di simpan');
+    }
+
     public function delete_user($id)
     {
         $delete = DB::table('tb_user')

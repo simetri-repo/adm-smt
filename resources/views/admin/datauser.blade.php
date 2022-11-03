@@ -77,18 +77,18 @@ active
                                        aria-label="Close"></button>
                                  </div>
                                  <div class="modal-body">
-                                    <form action="#" method="post">
+                                    <form action="{{ url('edit_user/'.$item->id) }}" method="post">
                                        @csrf
                                        <div class="mb-3">
-                                          <label for="" class="form-label">Email</label>
-                                          <input type="text" class="form-control" name="" id=""
+                                          <label for="" class="form-label">Email / Username</label>
+                                          <input type="text" class="form-control" name="username" id=""
                                              aria-describedby="helpId" placeholder="" value="{{ $item->username }}"
                                              readonly />
                                           {{-- <small id="helpId" class="form-text text-muted">Help text</small> --}}
                                        </div>
                                        <div class="mb-3">
                                           <label for="" class="form-label">Role :</label>
-                                          <select class="form-select" name="" id="">
+                                          <select class="form-control" name="role" id="">
                                              @if ($item->role == 1)
                                              <option value="1" selected>Admin</option>
                                              <option value="3">User</option>
@@ -99,8 +99,8 @@ active
                                           </select>
                                        </div>
                                        <div class="mb-3">
-                                          <label for="" class="form-label">Role :</label>
-                                          <select class="form-select" name="" id="">
+                                          <label for="" class="form-label">Status :</label>
+                                          <select class="form-control" name="status" id="">
                                              @if ($item->status == 0)
                                              <option value="0" selected>Active</option>
                                              <option value="9">Blocked</option>
