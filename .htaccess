@@ -1,5 +1,36 @@
 <IfModule mod_rewrite.c>
     RewriteEngine on
+    RewriteCond %{HTTP_HOST} admin-sinarmetrindo\.airartikennels\.co\.id [NC]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://admin-sinarmetrindo.airartikennels.co.id/$1 [R,L]
     RewriteCond %{REQUEST_URI} !^public
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
+# RewriteCond %{HTTP_HOST} ^sarana\-aset\.airartikennels\.co\.id$
+# RewriteRule ^/?$ "https\:\/\/www\.sarana\-aset\.airartikennels\.co\.id\/" [R=301,L]
+
+# #redirect http to https
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# RewriteEngine On
+# RewriteCond %{HTTP_HOST} admin-sinarmetrindo\.airartikennels\.co\.id [NC]
+# RewriteCond %{SERVER_PORT} 80
+# RewriteRule ^(.*)$ https://admin-sinarmetrindo.airartikennels.co.id/$1 [R,L]
+
+#Default
+# <IfModule mod_rewrite.c>
+#     RewriteEngine on
+#     RewriteCond %{REQUEST_URI} !^public
+#     RewriteRule ^(.*)$ public/$1 [L]
+# </IfModule>
+# RewriteCond %{HTTP_HOST} ^sarana\-aset\.airartikennels\.co\.id$
+# RewriteRule ^/?$ "https\:\/\/www\.sarana\-aset\.airartikennels\.co\.id\/" [R=301,L]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php80” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php80 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

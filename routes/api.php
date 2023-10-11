@@ -20,9 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('show_berita', [ApiController::class, 'show_berita']);
+Route::get('show_tahun', [ApiController::class, 'show_tahun']);
 Route::get('show_produk', [ApiController::class, 'show_produk']);
 Route::get('show_certificate', [ApiController::class, 'show_certificate']);
 Route::get('show_berita', [ApiController::class, 'show_berita']);
+Route::get('show_berita_detail/{id}', [ApiController::class, 'show_berita_detail']);
 Route::get('show_berita_hot', [ApiController::class, 'show_berita_hot']);
 Route::get('show_berita_top', [ApiController::class, 'show_berita_top']);
 Route::get('show_career', [ApiController::class, 'show_career']);

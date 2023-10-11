@@ -21,9 +21,38 @@ class ApiController extends Controller
 {
     public function show_berita()
     {
+        $year = request('year');
+        
         $response = DB::table('tb_berita')
             ->select('*')
             ->where('status_berita', 1)
+            ->orderByDesc('update_rilis')
+            ->whereYear('update_rilis', $year)
+            ->paginate(10);
+
+        // return $response;
+        return response()->json($response);
+    }
+    
+    public function show_tahun(Request $request)
+    {
+        $response = DB::table('tb_berita')
+            ->select(DB::raw('YEAR(update_rilis) as tahun'), DB::raw('COUNT(id_berita) as total'))
+            ->where('status_berita', 1)
+            ->groupBy('tahun')
+            ->orderBy('tahun', 'asc')
+            ->get();
+
+        // return $response;
+        return response()->json($response);
+    }
+    
+    public function show_berita_detail($id)
+    {
+        $response = DB::table('tb_berita')
+            ->select('id_berita','gambar_berita','nama_berita','keterangan_berita','updated_at','update_rilis')
+            ->where('id_berita', $id)
+            // ->where('status_berita', 1)
             ->get();
 
         return $response;

@@ -25,7 +25,7 @@ active
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Table certificate</h5>
+                    <h5 class="card-title">Table Career</h5>
                     <div class="table-responsive-lg">
                         <table id="dt_table" class="display table table-striped" style="width:100%">
                             <thead>

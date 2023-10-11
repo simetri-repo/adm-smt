@@ -40,11 +40,18 @@ active
                            {{-- <small id="helpId" class="text-muted">Help text</small> --}}
                         </div>
                         {{-- --}}
+                        <!--<div class="mb-3">-->
+                        <!--   <label for="" class="form-label">Keterangan Berita :</label>-->
+                        <!--   <textarea class="form-control" name="keterangan_berita" id="" cols="30"-->
+                        <!--      rows="10">{{ $response[0]->keterangan_berita }}</textarea>-->
+                        <!--   {{-- <small id="helpId" class="text-muted">Help text</small> --}}-->
+                        <!--</div>-->
                         <div class="mb-3">
-                           <label for="" class="form-label">Keterangan Berita :</label>
-                           <textarea class="form-control" name="keterangan_berita" id="" cols="30"
-                              rows="10">{{ $response[0]->keterangan_berita }}</textarea>
-                           {{-- <small id="helpId" class="text-muted">Help text</small> --}}
+                            <label for="" class="form-label">Keterangan Berita :</label>
+                            
+                            <textarea class="form-control" name="keterangan_berita" id="KeteranganShowingUp" rows="4">{{ $response[0]->keterangan_berita }}</textarea>
+                            <small id="helpId" class="form-text text-muted"></small>
+                            {{-- <small id="helpId" class="text-muted">Help text</small> --}}
                         </div>
                         {{-- --}}
                         <div class="mb-3">
@@ -58,9 +65,9 @@ active
                               placeholder="" value="{{ session('username')}}" readonly>
                         </div>
                         <div class="mb-3">
-                           <label for="" class="form-label">Rilis/Update :</label>
-                           <input type="text" class="form-control" name="updated_at" id="" aria-describedby="helpId"
-                              placeholder="" value="{{ $response[0]->updated_at }}" readonly>
+                            <label for="" class="form-label">Rilis/Update :</label>
+                            <input type="date" class="form-control" name="updated_at" id=""
+                                aria-describedby="helpId" placeholder="" value="{{ $response[0]->update_rilis }}">
                         </div>
                         <div class="mb-3">
                            <label for="" class="form-label">Status</label>
@@ -94,4 +101,70 @@ active
 </div>
 
 {{-- --}}
+@endsection
+
+@section('style')
+    <link rel="stylesheet" href="{{ asset('richtexteditor/rte_theme_default.css') }}" />
+    <script type="text/javascript" src="{{ asset('richtexteditor/rte.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('richtexteditor/plugins/all_plugins.js') }}"></script>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        tinymce.init({
+            selector: '#KeteranganShowing',
+            plugins: [
+                'advlist autolink link lists charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                'table emoticons template paste help'
+            ],
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist outdent indent | link media | preview fullscreen | ' +
+                'forecolor backcolor',
+            menu: {
+                favs: {
+                    title: 'My Favorites',
+                    items: 'code visualaid | searchreplace | emoticons'
+                }
+            },
+            menubar: 'favs file edit view insert format tools table help',
+            content_css: 'css/content.css'
+        });
+
+        $(document).on('focusin', function(e) {
+            if ($(e.target).closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root")
+                .length) {
+                e.stopImmediatePropagation();
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        tinymce.init({
+            selector: '#KeteranganShowingUp',
+            plugins: [
+                'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                'table emoticons template paste help'
+            ],
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist outdent indent | link media | preview fullscreen | ' +
+                'forecolor backcolor | help',
+            menu: {
+                favs: {
+                    title: 'My Favorites',
+                    items: 'code visualaid | searchreplace | emoticons'
+                }
+            },
+            menubar: 'favs file edit view insert format tools table help',
+            content_css: 'css/content.css'
+        });
+
+        $(document).on('focusin', function(e) {
+            if ($(e.target).closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root")
+                .length) {
+                e.stopImmediatePropagation();
+            }
+        });
+    </script>
 @endsection

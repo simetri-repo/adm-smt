@@ -40,9 +40,10 @@ class NewsController extends Controller
             'gambar_berita' => $path_mtools,
             'nama_berita' => $request->nama_berita,
             'keterangan_berita' => $request->keterangan_berita,
-            'status_berita' => 9,
+            'status_berita' => $request->status_berita,
             'created_by' => session('username'),
-            'updated_at' => $tgl
+            'updated_at' => $tgl,
+            'update_rilis' => $request->update_rilis
 
         ]);
 
@@ -69,6 +70,7 @@ class NewsController extends Controller
         $keterangan_berita = $request->keterangan_berita;
         $created_by_new = $request->created_by_new;
         $status_berita = $request->status_berita;
+        $update_rilis = $request->updated_at;
 
         if ($gambar_berita_new == "") {
             $response = DB::table('tb_berita')
@@ -78,7 +80,9 @@ class NewsController extends Controller
                     'keterangan_berita' => $keterangan_berita,
                     'status_berita' => $status_berita,
                     'created_by' => $created_by_new,
-                    'updated_at' => $tgl
+                    'update_rilis' => $update_rilis,
+                    'updated_at' => $tgl,
+                    
                 ]);
         } else {
 
@@ -99,6 +103,7 @@ class NewsController extends Controller
                     'keterangan_berita' => $keterangan_berita,
                     'status_berita' => $status_berita,
                     'created_by' => $created_by_new,
+                    'update_rilis' => $update_rilis,
                     'updated_at' => $tgl
                 ]);
         }
@@ -106,11 +111,28 @@ class NewsController extends Controller
         return redirect('datanews')->with('status_ok', 'Update Success!');
     }
 
-    public function delete_news($id)
+    // public function delete_news($id)
+    // {
+    //     $delete = DB::table('tb_berita')
+    //         ->where('id_berita', $id)
+    //         ->delete();
+    //     return redirect('datanews')->with('status_ok', 'Data berhasil dihapus.');
+    // }
+    
+     public function delete_news($id)
     {
+        $getid = DB::table('tb_berita')
+            ->where('id_berita', $id)
+            ->first();
+
+        $image = public_path($getid->gambar_berita);
+        
+        unlink($image);
+
         $delete = DB::table('tb_berita')
             ->where('id_berita', $id)
             ->delete();
+
         return redirect('datanews')->with('status_ok', 'Data berhasil dihapus.');
     }
 }

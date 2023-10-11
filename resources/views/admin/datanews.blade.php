@@ -75,7 +75,7 @@ active
 <!-- ADD -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog">
+   <div class="modal-dialog modal-lg">
       <div class="modal-content">
          <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">Add Berita
@@ -97,8 +97,23 @@ active
                   {{-- <small id="helpId" class="form-text text-muted">Help text</small> --}}
                </div>
                <div class="mb-3">
+                  <label for="" class="form-label">Tanggal rilis</label>
+                  <input type="date" class="form-control" placeholder="File" name="update_rilis" id="update_rilis">
+                  {{-- <small id="helpId" class="form-text text-muted">Help text</small> --}}
+               </div>
+               <div class="mb-3">
+                  <label for="" class="form-label">Status</label>
+                  <select class="form-control" name="status_berita" id="">
+                        <option value="9">Not-Display</option>
+                        <option value="1" selected>Displayed</option>
+                        <option value="3">Hot Topic</option>
+                        <option value="2">Top Trending</option>
+                  </select>
+              </div>
+               <div class="mb-3">
                   <label for="" class="form-label">Keterangan Berita</label>
-                  <textarea class="form-control" name="keterangan_berita" id="" rows="3"></textarea>
+                  <textarea class="form-control" name="keterangan_berita" id="KeteranganShowingUp" rows="4"></textarea>
+                  <small id="helpId" class="form-text text-muted"></small>
                </div>
                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -107,4 +122,70 @@ active
    </div>
 </div>
 {{-- --}}
+@endsection
+
+@section('style')
+    <link rel="stylesheet" href="{{ asset('richtexteditor/rte_theme_default.css') }}" />
+    <script type="text/javascript" src="{{ asset('richtexteditor/rte.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('richtexteditor/plugins/all_plugins.js') }}"></script>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        tinymce.init({
+            selector: '#KeteranganShowing',
+            plugins: [
+                'advlist autolink link lists charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                'table emoticons template paste help'
+            ],
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist outdent indent | link media | preview fullscreen | ' +
+                'forecolor backcolor',
+            menu: {
+                favs: {
+                    title: 'My Favorites',
+                    items: 'code visualaid | searchreplace | emoticons'
+                }
+            },
+            menubar: 'favs file edit view insert format tools table help',
+            content_css: 'css/content.css'
+        });
+
+        $(document).on('focusin', function(e) {
+            if ($(e.target).closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root")
+                .length) {
+                e.stopImmediatePropagation();
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        tinymce.init({
+            selector: '#KeteranganShowingUp',
+            plugins: [
+                'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                'table emoticons template paste help'
+            ],
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist outdent indent | link media | preview fullscreen | ' +
+                'forecolor backcolor | help',
+            menu: {
+                favs: {
+                    title: 'My Favorites',
+                    items: 'code visualaid | searchreplace | emoticons'
+                }
+            },
+            menubar: 'favs file edit view insert format tools table help',
+            content_css: 'css/content.css'
+        });
+
+        $(document).on('focusin', function(e) {
+            if ($(e.target).closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root")
+                .length) {
+                e.stopImmediatePropagation();
+            }
+        });
+    </script>
 @endsection
